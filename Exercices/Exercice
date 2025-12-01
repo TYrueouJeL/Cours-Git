@@ -1,0 +1,207 @@
+## **1. Préparer le projet**
+
+1. Créer un dossier dans ce projet :
+
+`Cours+Git/<Ton nom>`
+
+2. Crée un fichier de test :
+
+```bash
+echo "Bonjour Git" > <Ton nom>.md
+```
+
+3. Vérifie que tu es dans le bon dossier :
+
+```bash
+ls
+```
+
+Tu devrais voir `README.md`.
+
+---
+
+## **2. Initialiser le dépôt Git**
+
+```bash
+git init
+```
+
+* Git va créer un dossier caché `.git` pour suivre ton projet.
+* Vérifie :
+
+```bash
+git status
+```
+
+* Tu verras `README.md` comme **non suivi (untracked)**.
+
+---
+
+## **3. Ajouter des fichiers à Git**
+
+```bash
+git add README.md
+```
+
+* Cela ajoute le fichier à la **zone de staging** (prêt pour le commit).
+
+---
+
+## **4. Faire le premier commit**
+
+```bash
+git commit -m "Premier commit : ajout du README"
+```
+
+* Ton fichier est maintenant **enregistré dans l’historique Git**.
+
+---
+
+## **5. Modifier le fichier et faire un nouveau commit**
+
+1. Ouvre `README.md` et ajoute une ligne :
+
+```
+Ceci est un projet de test pour apprendre Git.
+```
+
+2. Vérifie le statut :
+
+```bash
+git status
+```
+
+* Tu verras que le fichier est **modifié**.
+
+3. Ajoute les modifications :
+
+```bash
+git add README.md
+```
+
+4. Commit :
+
+```bash
+git commit -m "Ajout d'une ligne dans le README"
+```
+
+5. Vérifie l’historique :
+
+```bash
+git log --oneline
+```
+
+* Tu devrais voir les deux commits.
+
+---
+
+## **6. Créer une branche pour une nouvelle fonctionnalité**
+
+1. Crée une branche :
+
+```bash
+git checkout -b nouvelle-fonctionnalité
+```
+
+2. Modifie le fichier `README.md`, ajoute par exemple :
+
+```
+Nouvelle fonctionnalité en test.
+```
+
+3. Commit les modifications :
+
+```bash
+git add README.md
+git commit -m "Ajout de la nouvelle fonctionnalité"
+```
+
+4. Reviens sur la branche principale :
+
+```bash
+git checkout main
+```
+
+5. Fusionne la branche :
+
+```bash
+git merge nouvelle-fonctionnalité
+```
+
+* Le contenu de `nouvelle-fonctionnalité` est maintenant intégré à `main`.
+
+---
+
+## **7. Travailler avec un dépôt distant (GitHub)**
+
+1. Crée un dépôt sur GitHub (sans README pour éviter les conflits).
+2. Copie l’URL HTTPS du dépôt.
+3. Connecte ton dépôt local à GitHub :
+
+```bash
+git remote add origin https://github.com/utilisateur/mon-projet.git
+```
+
+4. Envoyer la branche principale sur GitHub :
+
+```bash
+git push -u origin main
+```
+
+5. Pour récupérer les modifications du dépôt distant plus tard :
+
+```bash
+git pull
+```
+
+---
+
+## **8. Gérer un conflit (exemple simple)**
+
+1. Modifie `README.md` sur ton ordinateur.
+2. Quelqu’un d’autre modifie le même fichier sur GitHub.
+3. Tente de `git pull` :
+
+```bash
+git pull
+```
+
+* Git te signale un **conflit**.
+* Ouvre le fichier, cherche les marqueurs `<<<<<<<` et `>>>>>>>`, choisis le texte correct, puis :
+
+```bash
+git add README.md
+git commit -m "Résolution du conflit"
+```
+
+---
+
+## **9. Fichier `.gitignore`**
+
+* Crée un fichier `.gitignore` pour ne pas suivre certains fichiers :
+
+```
+*.log
+node_modules/
+.env
+```
+
+* Ajoute-le au dépôt :
+
+```bash
+git add .gitignore
+git commit -m "Ajout du fichier .gitignore"
+```
+
+---
+
+## **10. Résumé du workflow Git typique**
+
+1. Créer/modifier un fichier.
+2. Vérifier le statut : `git status`.
+3. Ajouter à la staging : `git add fichier`.
+4. Faire un commit : `git commit -m "message"`.
+5. Pousser vers GitHub : `git push`.
+6. Tirer les changements d’autres collaborateurs : `git pull`.
+7. Créer une branche pour tester une fonctionnalité.
+8. Fusionner la branche dans `main` après test.
