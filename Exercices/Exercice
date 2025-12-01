@@ -1,165 +1,204 @@
-## **1. Clone le dépôt git**
+## **1. Cloner un dépôt Git (GitHub dès le début)**
+
+Avant tout, on récupère un dépôt existant depuis GitHub :
 
 ```bash
 git clone https://github.com/TYrueouJeL/Cours-Git.git
 ```
 
-## **2. Préparer le projet**
+Ce dépôt est maintenant sur ton ordinateur (local).
 
-1. Créer un dossier dans ce projet :
+Entre dans le dossier :
 
-`Cours+Git/<Ton nom>`
+```bash
+cd Cours-Git
+```
 
-2. Crée un fichier de test nommé `<Ton nom>.md`
+---
+
+# **2. Préparer ton espace de travail**
+
+1. Crée un dossier à ton nom :
+   `Cours-Git/<Ton nom>/`
+
+2. Crée un fichier `<Ton nom>.md` dans ton dossier.
+
+Vérifie :
 
 ```bash
 git status
 ```
 
-* Tu verras `<Ton nom>/<Ton nom>.md` comme **non suivi (untracked)**.
-
-
-## **3. Ajouter des fichiers à Git**
-
-```bash
-git add <Ton nom>.md
-```
-
-* Cela ajoute le fichier à la **zone de staging** (prêt pour le commit).
+Tu verras que `<Ton nom>/<Ton nom>.md` est **untracked** (= Git ne le suit pas encore).
 
 ---
 
-## **4. Faire le premier commit**
+# **3. Ajouter le fichier à Git (staging)**
+
+```bash
+git add <Ton nom>/<Ton nom>.md
+```
+
+Ton fichier est maintenant dans la zone de **staging**.
+
+---
+
+# **4. Faire ton premier commit**
 
 ```bash
 git commit -m "Premier commit : ajout de <Ton nom>.md"
 ```
 
-* Ton fichier est maintenant **enregistré dans l’historique Git**.
+Ton fichier est maintenant enregistré dans l’historique Git.
 
 ---
 
-## **5. Modifier le fichier et faire un nouveau commit**
+# **5. Modifier le fichier et faire un 2ᵉ commit**
 
-1. Ouvre `<ton nom>.md` et ajoute une ligne :
+1. Modifie `<Ton nom>.md` et ajoute :
 
 ```
 Ceci est un projet de test pour apprendre Git.
 ```
 
-2. Vérifie le statut :
+2. Vérifie :
 
 ```bash
 git status
 ```
 
-* Tu verras que le fichier est **modifié**.
-
-3. Ajoute les modifications :
+3. Ajoute :
 
 ```bash
-git add `<ton nom>.md`
+git add <Ton nom>/<Ton nom>.md
 ```
 
 4. Commit :
 
 ```bash
-git commit -m "Ajout d'une ligne dans <ton nom>.md"
+git commit -m "Ajout d'une ligne dans <Ton nom>.md"
 ```
 
-5. Vérifie l’historique :
+5. Historique :
 
 ```bash
 git log --oneline
 ```
 
-* Tu devrais voir les deux commits.
-
-
-## **6. Créer une branche pour une nouvelle fonctionnalité**
-
-1. Crée une branche :
-
-```bash
-git checkout -b cours-<Ton nom>
-```
-
-2. Modifie le fichier `<ton nom>.md`, ajoute par exemple :
-
-```
-Nouvelle fonctionnalité en test.
-```
-
-3. Commit les modifications :
-
-```bash
-git add README.md
-git commit -m "Ajout de la nouvelle fonctionnalité"
-```
-
-4. Reviens sur la branche principale :
-
-```bash
-git checkout main
-```
-
-5. Fusionne la branche :
-
-```bash
-git merge nouvelle-fonctionnalité
-```
-
-* Le contenu de `nouvelle-fonctionnalité` est maintenant intégré à `main`.
-
 ---
 
-## **7. Travailler avec un dépôt distant (GitHub)**
+# Introduction à Github
 
-1. Crée un dépôt sur GitHub (sans README pour éviter les conflits).
-2. Copie l’URL HTTPS du dépôt.
-3. Connecte ton dépôt local à GitHub :
+À ce stade, tu as :
+
+* un dépôt Git local
+* des commits
+* mais **GitHub n’est pas encore configuré comme “remote”**
+
+➡️ On configure maintenant la connexion Git ↔ GitHub.
+
+### 1. Crée un dépôt vide sur GitHub (sans README).
+
+### 2. Ajoute ce dépôt comme remote :
 
 ```bash
-git remote add origin https://github.com/utilisateur/mon-projet.git
+git remote add origin https://github.com/<utilisateur>/<nom-projet>.git
 ```
 
-4. Envoyer la branche principale sur GitHub :
+### 3. Envoie ton travail sur GitHub :
 
 ```bash
 git push -u origin main
 ```
 
-5. Pour récupérer les modifications du dépôt distant plus tard :
+Ton dépôt GitHub est maintenant synchronisé avec ton dépôt local.
+
+---
+
+# **7. Ajouter une fonctionnalité avec une branche**
+
+Maintenant que GitHub est en place, on introduit les branches.
+
+## 1. Création d’une branche
 
 ```bash
-git pull
+git checkout -b cours-<Ton nom>
+```
+
+## 2. Modifier `<Ton nom>.md`
+
+Ajoute :
+
+```
+Nouvelle fonctionnalité en test.
+```
+
+## 3. Commit :
+
+```bash
+git add <Ton nom>/<Ton nom>.md
+git commit -m "Ajout de la nouvelle fonctionnalité"
+```
+
+## 4. Pousser la branche sur GitHub (important !) :
+
+```bash
+git push -u origin cours-<Ton nom>
 ```
 
 ---
 
-## **8. Gérer un conflit (exemple simple)**
+# **8. Fusionner la branche**
 
-1. Modifie `README.md` sur ton ordinateur.
-2. Quelqu’un d’autre modifie le même fichier sur GitHub.
-3. Tente de `git pull` :
+1. Reviens sur `main` :
+
+```bash
+git checkout main
+```
+
+2. Récupère les dernières modifications :
 
 ```bash
 git pull
 ```
 
-* Git te signale un **conflit**.
-* Ouvre le fichier, cherche les marqueurs `<<<<<<<` et `>>>>>>>`, choisis le texte correct, puis :
+3. Fusionne la branche :
+
+```bash
+git merge cours-<Ton nom>
+```
+
+4. Envoie la nouvelle version sur GitHub :
+
+```bash
+git push
+```
+
+---
+
+# **9. Gérer un conflit**
+
+1. Modifie `README.md` localement.
+2. Quelqu’un modifie le même fichier sur GitHub.
+3. Tu fais :
+
+```bash
+git pull
+```
+
+Git détecte un conflit ❗
+Ouvre le fichier, corrige les deux versions, puis :
 
 ```bash
 git add README.md
-git commit -m "Résolution du conflit"
+git commit -m "Résolution de conflit"
 ```
 
 ---
 
-## **9. Fichier `.gitignore`**
+# **10. Le fichier `.gitignore`**
 
-* Crée un fichier `.gitignore` pour ne pas suivre certains fichiers :
+Créer un fichier `.gitignore` :
 
 ```
 *.log
@@ -167,22 +206,24 @@ node_modules/
 .env
 ```
 
-* Ajoute-le au dépôt :
+L’ajouter :
 
 ```bash
 git add .gitignore
 git commit -m "Ajout du fichier .gitignore"
+git push
 ```
 
 ---
 
-## **10. Résumé du workflow Git typique**
+# **11. Résumé clair du workflow Git/GitHub**
 
-1. Créer/modifier un fichier.
-2. Vérifier le statut : `git status`.
-3. Ajouter à la staging : `git add fichier`.
-4. Faire un commit : `git commit -m "message"`.
-5. Pousser vers GitHub : `git push`.
-6. Tirer les changements d’autres collaborateurs : `git pull`.
-7. Créer une branche pour tester une fonctionnalité.
-8. Fusionner la branche dans `main` après test.
+```
+1. git pull              # récupérer le travail des autres
+2. git status            # vérifier ce qui a changé
+3. git add fichier       # préparer un fichier
+4. git commit -m ""      # enregistrer l’historique local
+5. git push              # envoyer sur GitHub
+6. git checkout -b Nom   # créer une branche
+7. git merge Nom         # fusionner
+```
