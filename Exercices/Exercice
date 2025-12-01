@@ -4,19 +4,7 @@
 
 `Cours+Git/<Ton nom>`
 
-2. Crée un fichier de test :
-
-```bash
-echo "Bonjour Git" > <Ton nom>.md
-```
-
-3. Vérifie que tu es dans le bon dossier :
-
-```bash
-ls
-```
-
-Tu devrais voir `README.md`.
+2. Crée un fichier de test nommé fichier.md
 
 ---
 
@@ -33,14 +21,14 @@ git init
 git status
 ```
 
-* Tu verras `README.md` comme **non suivi (untracked)**.
+* Tu verras `<Ton nom>/texte.md` comme **non suivi (untracked)**.
 
 ---
 
 ## **3. Ajouter des fichiers à Git**
 
 ```bash
-git add README.md
+git add <Ton nom>.md
 ```
 
 * Cela ajoute le fichier à la **zone de staging** (prêt pour le commit).
