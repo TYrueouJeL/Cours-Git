@@ -83,6 +83,7 @@ Git a 3 zones principales :
 3. **Repository** (dépôt local) : historique des commits.
 
 Schéma simplifié :
+
               +----------------------+
               |    Dépôt distant     |
               |   (GitHub/GitLab)   |
