@@ -1,29 +1,23 @@
-## **1. Préparer le projet**
+## **1. Clone le dépôt git**
+
+```bash
+git clone https://github.com/TYrueouJeL/Cours-Git.git
+```
+
+## **2. Préparer le projet**
 
 1. Créer un dossier dans ce projet :
 
 `Cours+Git/<Ton nom>`
 
-2. Crée un fichier de test nommé fichier.md
-
----
-
-## **2. Initialiser le dépôt Git**
-
-```bash
-git init
-```
-
-* Git va créer un dossier caché `.git` pour suivre ton projet.
-* Vérifie :
+2. Crée un fichier de test nommé `<Ton nom>.md`
 
 ```bash
 git status
 ```
 
-* Tu verras `<Ton nom>/texte.md` comme **non suivi (untracked)**.
+* Tu verras `<Ton nom>/<Ton nom>.md` comme **non suivi (untracked)**.
 
----
 
 ## **3. Ajouter des fichiers à Git**
 
@@ -38,7 +32,7 @@ git add <Ton nom>.md
 ## **4. Faire le premier commit**
 
 ```bash
-git commit -m "Premier commit : ajout du README"
+git commit -m "Premier commit : ajout de <Ton nom>.md"
 ```
 
 * Ton fichier est maintenant **enregistré dans l’historique Git**.
@@ -47,7 +41,7 @@ git commit -m "Premier commit : ajout du README"
 
 ## **5. Modifier le fichier et faire un nouveau commit**
 
-1. Ouvre `README.md` et ajoute une ligne :
+1. Ouvre `<ton nom>.md` et ajoute une ligne :
 
 ```
 Ceci est un projet de test pour apprendre Git.
@@ -64,13 +58,13 @@ git status
 3. Ajoute les modifications :
 
 ```bash
-git add README.md
+git add `<ton nom>.md`
 ```
 
 4. Commit :
 
 ```bash
-git commit -m "Ajout d'une ligne dans le README"
+git commit -m "Ajout d'une ligne dans <ton nom>.md"
 ```
 
 5. Vérifie l’historique :
@@ -81,17 +75,16 @@ git log --oneline
 
 * Tu devrais voir les deux commits.
 
----
 
 ## **6. Créer une branche pour une nouvelle fonctionnalité**
 
 1. Crée une branche :
 
 ```bash
-git checkout -b nouvelle-fonctionnalité
+git checkout -b cours-<Ton nom>
 ```
 
-2. Modifie le fichier `README.md`, ajoute par exemple :
+2. Modifie le fichier `<ton nom>.md`, ajoute par exemple :
 
 ```
 Nouvelle fonctionnalité en test.
