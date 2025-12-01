@@ -193,22 +193,16 @@ git merge nom_branche
 
 ## **7. Travailler avec un dépôt distant**
 
-### 7.1. Ajouter un dépôt distant
+### 7.1. Récupérer les modifications d’un dépôt distant
 
 ```bash
-git remote add origin https://github.com/utilisateur/projet.git
+git pull
 ```
 
 ### 7.2. Envoyer les commits sur GitHub
 
 ```bash
 git push -u origin main
-```
-
-### 7.3. Récupérer les modifications d’un dépôt distant
-
-```bash
-git pull
 ```
 
 ---
