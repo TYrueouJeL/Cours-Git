@@ -83,11 +83,31 @@ Git a 3 zones principales :
 3. **Repository** (dépôt local) : historique des commits.
 
 Schéma simplifié :
-
-```
-Working Directory → Staging Area → Repository
-```
-
+              +----------------------+
+              |    Dépôt distant     |
+              |   (GitHub/GitLab)   |
+              +----------------------+
+                        ^
+                        |  git push / git pull
+                        |
+              +----------------------+
+              |   Repository local   |
+              |      (commits)      |
+              +----------------------+
+                        ^
+                        | git commit
+                        |
+              +----------------------+
+              |    Staging Area      |
+              |   (zone de préparation) |
+              +----------------------+
+                        ^
+                        | git add
+                        |
+              +----------------------+
+              | Working Directory    |
+              |  (dossier projet)   |
+              +----------------------+
 ---
 
 ## **5. Commandes de base**
